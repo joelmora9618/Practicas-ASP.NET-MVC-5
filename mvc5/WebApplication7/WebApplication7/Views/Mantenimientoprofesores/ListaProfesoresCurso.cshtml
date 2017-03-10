@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication7.Models.profesores>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curso.turno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curso.divicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.materia.materia1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curso.turno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curso.divicion)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.materia.materia1)*@
+            @Html.ActionLink(item.materia.materia1, "ListaDetalleMateriProfesor", new { profesor = item.id_materia})
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.dni_profesor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.dni_profesor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.dni_profesor })
+        </td>
+    </tr>
+}
+
+</table>

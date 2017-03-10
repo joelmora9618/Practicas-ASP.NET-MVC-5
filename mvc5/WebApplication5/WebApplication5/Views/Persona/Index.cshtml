@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication5.Models.Persona>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de personas</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.nombre)*@
+            nombre
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.apellido)*@
+            apellido
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.edad)*@
+            edad
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.dni)*@
+            DNI
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>

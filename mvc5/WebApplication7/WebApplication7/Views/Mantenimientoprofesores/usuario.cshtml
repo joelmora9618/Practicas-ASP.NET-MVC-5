@@ -1,0 +1,16 @@
+﻿@using WebApplication7.Models
+@model clsProfesor
+
+
+<form method="post">
+
+    dni_profesor: @Html.TextBoxFor(x=> x.dni_profesor)<br />
+    nombre: @Html.TextBoxFor(x=> x.nombre)<br />
+    apellido: @Html.TextBoxFor(x=> x.apellido)<br />
+    edad: @Html.TextBoxFor(x=> x.edad)<br />
+    id_materia: @Html.TextBoxFor(x=> x.id_materia)<br />
+    divicion: @Html.TextBoxFor(x=> x.divicion)<br />
+
+    <input type="submit" value="enviar" />
+    
+</form>

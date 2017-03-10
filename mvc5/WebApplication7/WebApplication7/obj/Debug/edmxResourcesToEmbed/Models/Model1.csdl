@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="practica7Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="alumno">
+    <Key>
+      <PropertyRef Name="dni_alumno" />
+    </Key>
+    <Property Name="dni_alumno" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="edad" Type="Int32" Nullable="false" />
+    <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="divicion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_alumno_curso" FromRole="alumno" ToRole="curso" />
+  </EntityType>
+  <EntityType Name="curso">
+    <Key>
+      <PropertyRef Name="divicion" />
+    </Key>
+    <Property Name="divicion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="turno" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="alumno" Relationship="Self.FK_alumno_curso" FromRole="curso" ToRole="alumno" />
+    <NavigationProperty Name="materia" Relationship="Self.FK_materia_curso" FromRole="curso" ToRole="materia" />
+    <NavigationProperty Name="profesores" Relationship="Self.FK_profesores_curso" FromRole="curso" ToRole="profesores" />
+  </EntityType>
+  <EntityType Name="materia">
+    <Key>
+      <PropertyRef Name="id_materia" />
+    </Key>
+    <Property Name="id_materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dni_profesor" Type="Int32" />
+    <Property Name="materia1" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="divicion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_materia_curso" FromRole="materia" ToRole="curso" />
+    <NavigationProperty Name="profesores" Relationship="Self.FK_profesores_materia" FromRole="materia" ToRole="profesores" />
+  </EntityType>
+  <EntityType Name="profesores">
+    <Key>
+      <PropertyRef Name="dni_profesor" />
+    </Key>
+    <Property Name="dni_profesor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="edad" Type="Int32" Nullable="false" />
+    <Property Name="id_materia" Type="Int32" />
+    <Property Name="divicion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_profesores_curso" FromRole="profesores" ToRole="curso" />
+    <NavigationProperty Name="materia" Relationship="Self.FK_profesores_materia" FromRole="profesores" ToRole="materia" />
+  </EntityType>
+  <Association Name="FK_alumno_curso">
+    <End Role="curso" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="divicion" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="divicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_materia_curso">
+    <End Role="curso" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="materia" Type="Self.materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="divicion" />
+      </Principal>
+      <Dependent Role="materia">
+        <PropertyRef Name="divicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesores_curso">
+    <End Role="curso" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="profesores" Type="Self.profesores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="divicion" />
+      </Principal>
+      <Dependent Role="profesores">
+        <PropertyRef Name="divicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesores_materia">
+    <End Role="materia" Type="Self.materia" Multiplicity="0..1" />
+    <End Role="profesores" Type="Self.profesores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materia">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="profesores">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="practica7Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="alumno" EntityType="Self.alumno" />
+    <EntitySet Name="curso" EntityType="Self.curso" />
+    <EntitySet Name="materia" EntityType="Self.materia" />
+    <EntitySet Name="profesores" EntityType="Self.profesores" />
+    <AssociationSet Name="FK_alumno_curso" Association="Self.FK_alumno_curso">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="alumno" EntitySet="alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_materia_curso" Association="Self.FK_materia_curso">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="materia" EntitySet="materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesores_curso" Association="Self.FK_profesores_curso">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="profesores" EntitySet="profesores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesores_materia" Association="Self.FK_profesores_materia">
+      <End Role="materia" EntitySet="materia" />
+      <End Role="profesores" EntitySet="profesores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

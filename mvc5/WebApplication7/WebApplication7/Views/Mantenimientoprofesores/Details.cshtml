@@ -1,0 +1,58 @@
+﻿@model WebApplication7.Models.profesores
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>profesores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.curso.turno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.curso.turno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.materia.materia1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.materia.materia1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.dni_profesor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

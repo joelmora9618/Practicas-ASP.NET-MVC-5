@@ -1,0 +1,18 @@
+﻿@model AjaxSqlServer.Models.alumno
+
+@if (Model.dni_alumno.Equals(0))
+{
+    <h1>No se ah encontrado el alumno ingresado</h1>
+}
+else
+{
+    <h1>Alumno: </h1>
+    <h2>
+        DNI: @Model.dni_alumno<br />
+        Nombre: @Model.nombre<br />
+        Apellido: @Model.apellido<br />
+        Edad: @Model.edad<br />
+        Sexo: @Model.sexo<br />
+        Divicion: @Model.divicion<br />
+    </h2>
+}

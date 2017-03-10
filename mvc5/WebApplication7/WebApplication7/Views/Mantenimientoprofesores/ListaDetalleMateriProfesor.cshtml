@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication7.Models.materia>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dni_profesor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.materia1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curso.turno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni_profesor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.materia1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curso.turno)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_materia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_materia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_materia })
+        </td>
+    </tr>
+}
+
+</table>

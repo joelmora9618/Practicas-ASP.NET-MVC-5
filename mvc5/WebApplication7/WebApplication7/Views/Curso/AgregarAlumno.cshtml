@@ -1,0 +1,66 @@
+﻿@using WebApplication7.Models;
+@model clsAlumno
+
+<h2>Agregar usuario</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "hay mas de un error")
+    <fieldset>
+
+        <br />
+
+        <div class="dni_field">
+            @Html.Label("DNI", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.dni_alumno, new { style = "border-color:green", size = "30" })
+            @Html.ValidationMessageFor(x => x.dni_alumno)
+        </div>
+     
+        <div class="nombre_field">
+            @Html.Label("Nombre", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.nombre, new { style = "border-color:green", size = "30" })
+            @Html.ValidationMessageFor(x => x.nombre)
+        </div>
+      
+        <div class="apellido_field">
+            @Html.Label("Apellido", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.apellido, new { style = "border-color: green", size = "30" })
+            @Html.ValidationMessageFor(x => x.apellido)
+        </div>
+    
+        <div class="edad_field">
+            @Html.Label("Edad", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.edad, new { style = "border-color:green", size = "30" })
+            @Html.ValidationMessageFor(x => x.edad)
+        </div>
+ 
+        <div class="sexo_field">
+            @Html.Label("Sexo", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.sexo, new { style = "border-color:green", size = "30" })
+            @Html.ValidationMessageFor(x => x.sexo)
+        </div>
+      
+        <div class="divicion_field">
+            @Html.Label("Divicion", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.divicion, new { style = "border-color:green", size = "30" })
+            @Html.ValidationMessageFor(x => x.divicion)
+        </div>
+     
+        <div class="turno-field">
+            @Html.Label("Turno", new { style = "color:gray", size = "30" })
+            <br />
+            @Html.TextBoxFor(x => x.turno, new { style = "border-color:green", size = "30" })
+            @Html.ValidationMessageFor(x => x.turno)
+        </div>
+        <br />
+
+        <input type="submit" value="enviar" />
+
+    </fieldset>
+}

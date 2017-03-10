@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication7.Models.curso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.divicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.turno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.divicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.turno)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.divicion }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.divicion }) |
+            @Html.ActionLink("eliminar", "Delete", new { id=item.divicion })
+        </td>
+    </tr>
+}
+
+</table>

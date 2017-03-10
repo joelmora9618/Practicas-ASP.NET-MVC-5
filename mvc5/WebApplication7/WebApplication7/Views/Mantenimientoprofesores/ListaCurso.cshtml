@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication7.Models.curso>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.divicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.turno)
+        </th>
+        <th></th>
+    </tr>
+
+    Mi nombre es @ViewData["Nombre"] y puedes seguirme en
+    <a href="http://facebook.com/@ViewData["Facebook"]">Facebook</a>.
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.divicion)*@
+            @Html.ActionLink(item.divicion, "ListaProfesoresCurso", new { curso = item.divicion})
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.turno)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.divicion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.divicion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.divicion })
+        </td>
+    </tr>
+}
+
+</table>

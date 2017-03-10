@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="practica7Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alumno">
+    <Key>
+      <PropertyRef Name="dni_alumno" />
+    </Key>
+    <Property Name="dni_alumno" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="edad" Type="int" Nullable="false" />
+    <Property Name="sexo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="divicion" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="curso">
+    <Key>
+      <PropertyRef Name="divicion" />
+    </Key>
+    <Property Name="divicion" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="turno" Type="varchar" MaxLength="35" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materia">
+    <Key>
+      <PropertyRef Name="id_materia" />
+    </Key>
+    <Property Name="id_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dni_profesor" Type="int" />
+    <Property Name="materia" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="divicion" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="profesores">
+    <Key>
+      <PropertyRef Name="dni_profesor" />
+    </Key>
+    <Property Name="dni_profesor" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="edad" Type="int" Nullable="false" />
+    <Property Name="id_materia" Type="int" />
+    <Property Name="divicion" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <Association Name="FK_alumno_curso">
+    <End Role="curso" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="divicion" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="divicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_materia_curso">
+    <End Role="curso" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="materia" Type="Self.materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="divicion" />
+      </Principal>
+      <Dependent Role="materia">
+        <PropertyRef Name="divicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesores_curso">
+    <End Role="curso" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="profesores" Type="Self.profesores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="divicion" />
+      </Principal>
+      <Dependent Role="profesores">
+        <PropertyRef Name="divicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesores_materia">
+    <End Role="materia" Type="Self.materia" Multiplicity="0..1" />
+    <End Role="profesores" Type="Self.profesores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materia">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="profesores">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="practica7ModelStoreContainer">
+    <EntitySet Name="alumno" EntityType="Self.alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="curso" EntityType="Self.curso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="materia" EntityType="Self.materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profesores" EntityType="Self.profesores" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_alumno_curso" Association="Self.FK_alumno_curso">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="alumno" EntitySet="alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_materia_curso" Association="Self.FK_materia_curso">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="materia" EntitySet="materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesores_curso" Association="Self.FK_profesores_curso">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="profesores" EntitySet="profesores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesores_materia" Association="Self.FK_profesores_materia">
+      <End Role="materia" EntitySet="materia" />
+      <End Role="profesores" EntitySet="profesores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

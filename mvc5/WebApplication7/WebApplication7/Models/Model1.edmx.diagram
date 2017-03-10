@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ff070ee3be645509cebe95b3e7d6f91" Name="Diagram1">
+        <EntityTypeShape EntityType="practica7Model.alumno" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="practica7Model.curso" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="practica7Model.materia" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="practica7Model.profesores" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="practica7Model.FK_alumno_curso" ManuallyRouted="false" />
+        <AssociationConnector Association="practica7Model.FK_materia_curso" ManuallyRouted="false" />
+        <AssociationConnector Association="practica7Model.FK_profesores_curso" ManuallyRouted="false" />
+        <AssociationConnector Association="practica7Model.FK_profesores_materia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

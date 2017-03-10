@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="practica7ModelStoreContainer" CdmEntityContainer="practica7Entities">
+    <EntitySetMapping Name="alumno">
+      <EntityTypeMapping TypeName="practica7Model.alumno">
+        <MappingFragment StoreEntitySet="alumno">
+          <ScalarProperty Name="dni_alumno" ColumnName="dni_alumno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="divicion" ColumnName="divicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="curso">
+      <EntityTypeMapping TypeName="practica7Model.curso">
+        <MappingFragment StoreEntitySet="curso">
+          <ScalarProperty Name="divicion" ColumnName="divicion" />
+          <ScalarProperty Name="turno" ColumnName="turno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materia">
+      <EntityTypeMapping TypeName="practica7Model.materia">
+        <MappingFragment StoreEntitySet="materia">
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="dni_profesor" ColumnName="dni_profesor" />
+          <ScalarProperty Name="materia1" ColumnName="materia" />
+          <ScalarProperty Name="divicion" ColumnName="divicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profesores">
+      <EntityTypeMapping TypeName="practica7Model.profesores">
+        <MappingFragment StoreEntitySet="profesores">
+          <ScalarProperty Name="dni_profesor" ColumnName="dni_profesor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="divicion" ColumnName="divicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

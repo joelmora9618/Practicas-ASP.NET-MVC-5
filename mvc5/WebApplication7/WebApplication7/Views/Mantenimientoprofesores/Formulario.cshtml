@@ -1,0 +1,32 @@
+﻿
+@using WebApplication7.Models;
+@model clsUsuario
+
+<h2>Nuevo usuario</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true,"Hay varios errores")
+    <fieldset>
+
+        <br />
+       
+        <div class="editor_field">
+            @Html.Label("Login", new { style = "color: gray", size = "30" })
+            @Html.TextBoxFor(x => x.login, new { style = "border-color: blue", size = "30" })
+            @Html.ValidationMessageFor(x=>x.login)
+        </div>
+        <br />
+        <div class="clave_field">
+            @Html.Label("Clave", new { style = "color: gray", size = "30" })
+            @Html.TextBoxFor(x => x.clave, new { style = "border-color: blue", size = "30" })
+            @Html.ValidationMessageFor(x=>x.clave)
+         </div>
+
+        <br />
+        <input type="submit" value="enviar" />
+
+    </fieldset>
+}
+
+

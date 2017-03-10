@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication6.Models.cargo>
+
+@{
+    ViewBag.Title = "listaCargos";
+}
+
+<h2>listaCargos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_cargo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_cargo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_cargo })
+        </td>
+    </tr>
+}
+
+</table>
